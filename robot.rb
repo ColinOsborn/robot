@@ -61,5 +61,14 @@ attr_reader :bearing
    end
 end
 
+class Simulator
+
+  def initialize
+  end
+
+  def instructions()
+    
+  end
+end
 
 # dont add instance variable here, since it's just reading
