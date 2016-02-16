@@ -59,6 +59,16 @@ attr_reader :bearing
        at(x -= 1, y)
      end
    end
+
+   def evaluate(instruction)
+     if instruction == :turn_left
+       turn_left
+     elsif instruction == :turn_right
+       turn_right
+     else
+       advance
+     end
+   end
 end
 
 class Simulator
@@ -66,8 +76,29 @@ class Simulator
   def initialize
   end
 
-  def instructions()
-    
+  def instructions(commands)
+    commands.split("").map do |command|
+    if command == "L"
+      :turn_left
+    elsif command == "R"
+      :turn_right
+    elsif command == "A"
+       :advance
+    end
+  end
+end
+
+  def place(robot, x: , y:, direction:)
+    robot.at(x, y)
+    robot.orient(direction)
+
+  end
+
+  def evaluate(robot, strings_command)
+    instruction_array = instructions(strings_command)
+    instruction_array.each do |instruction|
+      robot.evaluate(instruction)
+    end
   end
 end
 
