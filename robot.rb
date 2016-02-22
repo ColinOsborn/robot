@@ -88,10 +88,9 @@ class Simulator
   end
 end
 
-  def place(robot, x: , y:, direction:)
+  def place(robot, x:, y:, direction:)
     robot.at(x, y)
     robot.orient(direction)
-
   end
 
   def evaluate(robot, strings_command)
